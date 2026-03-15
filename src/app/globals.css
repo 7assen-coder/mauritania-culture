@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --sand-gold: #D4A84B;
+  --terracotta: #A0522D;
+  --night-sky: #1A1A2E;
+  --cream: #F5F0E1;
+  --teal: #2D6A6A;
+  --dark-brown: #3E2723;
+  --warm-beige: #E8D5B7;
+  --deep-gold: #B8860B;
+}
+
+@theme inline {
+  --color-sand-gold: var(--sand-gold);
+  --color-sand-gold-light: #E8C97A;
+  --color-terracotta: var(--terracotta);
+  --color-night-sky: var(--night-sky);
+  --color-cream: var(--cream);
+  --color-teal: var(--teal);
+  --color-dark-brown: var(--dark-brown);
+  --color-warm-beige: var(--warm-beige);
+  --color-deep-gold: var(--deep-gold);
+  --color-surface: #222233;
+  --color-surface-light: #2a2a3e;
+  --color-cream-dark: #EBE3D0;
+  --color-mr-green: #006233;
+  --color-border: #333355;
+  --color-border-light: #d5c9ac;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-arabic: 'Amiri', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--night-sky);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--sand-gold); border-radius: 4px; }
+
+::selection {
+  color: #fff;
+  background: #D4A84B80;
+}
+
+/* ===== Container — single source of truth (portfolio pattern) ===== */
+.container-main {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 640px)  { .container-main { padding-inline: 2rem; } }
+@media (min-width: 1024px) { .container-main { padding-inline: 3rem; } }
+
+/* ===== Sand particles ===== */
+@keyframes float-up {
+  0%   { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.5; }
+  100% { transform: translateY(-10vh) translateX(100px) scale(1); opacity: 0; }
+}
+.sand-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--sand-gold);
+  border-radius: 50%;
+  animation: float-up linear infinite;
+  pointer-events: none;
+}
+
+/* ===== Video embed ===== */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ===== Text effects ===== */
+.text-gradient {
+  background: linear-gradient(135deg, var(--sand-gold), var(--deep-gold), var(--terracotta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Mauritanian flag stripe ===== */
+.mr-stripe {
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-mr-green) 30%, var(--sand-gold) 50%, var(--color-mr-green) 70%);
+}
+
+/* ===== Scroll animation ===== */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+
+/* ===== Section dividers ===== */
+.section-divider {
+  height: 1px;
+  max-width: 80%;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, #D4A84B40, transparent);
+}
+.section-divider-dark {
+  height: 1px;
+  max-width: 80%;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, #D4A84B30, transparent);
+}
+
+/* ===== RTL ===== */
+[dir="rtl"] { font-family: var(--font-arabic); }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 { font-family: var(--font-arabic); }
