@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useLang } from "@/lib/LanguageContext";
 
-const PORTFOLIO_URL = "https://portfolio-drhx.vercel.app";
+const PORTFOLIO_URL = "https://medhassen.vercel.app";
 
 export default function Footer() {
   const { t, lang } = useLang();
@@ -41,7 +41,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 lg:col-span-6">
             <div className="flex items-center gap-3 mb-5">
-              <Image src="/logo.png" alt="Logo" width={32} height={32} className="rounded-lg" />
+              <Image src="/gp-logo.png" alt="Logo" width={32} height={32} className="rounded-lg" />
               <span className="font-heading font-bold text-sm text-cream/90 tracking-tight">{t.footer.brand}</span>
             </div>
             <p className="text-[13px] text-cream/30 leading-7 max-w-md">{t.footer.desc}</p>

@@ -16,7 +16,7 @@ export default function AboutSection() {
     >
       {/* Cream area — pt for space after Games wave */}
       <div className="relative pt-20 lg:pt-28 py-24 pb-24 lg:pb-32">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="container-main">
           <SectionTitle
             subtitle={t.about.subtitle}
             title={t.about.title}

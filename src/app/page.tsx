@@ -2,12 +2,11 @@
 
 import { LanguageProvider } from "@/lib/LanguageContext";
 import { VideoProvider } from "@/lib/VideoContext";
+import { CultureProvider } from "@/lib/CultureContext";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import MahadraSection from "@/components/MahadraSection";
-import MusicSection from "@/components/MusicSection";
-import InstrumentsSection from "@/components/InstrumentsSection";
-import GamesSection from "@/components/GamesSection";
+import CultureUpNavbar from "@/components/CultureUpNavbar";
+import CulturalTrack from "@/components/CulturalTrack";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -17,10 +16,10 @@ export default function Home() {
         <main className="overflow-hidden">
           <Navbar />
           <HeroSection />
-          <MahadraSection />
-          <MusicSection />
-          <InstrumentsSection />
-          <GamesSection />
+          <CultureProvider>
+            <CultureUpNavbar />
+            <CulturalTrack />
+          </CultureProvider>
           <Footer />
         </main>
       </VideoProvider>

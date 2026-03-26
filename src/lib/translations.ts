@@ -1,3 +1,5 @@
+import { arAltTracks, frAltTracks } from "./altTracksData";
+
 export type Lang = "fr" | "ar";
 
 const fr = {
@@ -6,7 +8,7 @@ const fr = {
     music: "Musique",
     instruments: "Instruments",
     games: "Jeux",
-    brand: "ESP Culturelle",
+    brand: "GP Culturelle",
     langSwitch: "عربي",
   },
   hero: {
@@ -57,7 +59,7 @@ const fr = {
     videoCaption1: "Les instruments de la musique maure",
     videoCaption2: "Démonstration d'instruments traditionnels",
     tableHeaders: { instrument: "Instrument", type: "Type", origin: "Origine", description: "Description" },
-    typeLabels: { Cordes: "Cordes", Percussion: "Percussion", Vent: "Vent" } as Record<string, string>,
+    typeLabels: { Cordes: "Cordes", Percussion: "Percussion", Vent: "Vent", Mixte: "Mixte" } as Record<string, string>,
     footerCount: "5 instruments",
     list: [
       { name: "Tidinit", type: "Cordes", origin: "Maure", desc: "Luth à 4 cordes joué par les hommes griots (iggawin), instrument principal de la musique azawan." },
@@ -133,16 +135,26 @@ const fr = {
     tags: ["Transmission Orale", "Éducation Communautaire", "Préservation Culturelle"],
   },
   footer: {
-    brand: "ESP - Journée Culturelle",
+    brand: "GP - Journée Culturelle",
     desc: "Un projet dédié à la valorisation et la préservation de la culture traditionnelle mauritanienne.",
     navTitle: "Navigation",
     sourcesTitle: "Sources",
-    copyright: "© 2026 ESP - Journée Culturelle. Projet éducatif et culturel.",
+    copyright: "© 2026 GP - Journée Culturelle. Projet éducatif et culturel.",
     republic: "الجمهورية الإسلامية الموريتانية",
     madeBy: "Conçu & développé par",
-    espStudents: "Étudiants ESP",
+    espStudents: "Étudiants GP",
     contact: "Contact",
   },
+  cultureNav: {
+    aria: "Choisir un peuple ou une culture mauritanienne",
+    cultures: {
+      bidan: { label: "Bidan", arabic: "البيظان" },
+      soninke: { label: "Soninkés", arabic: "سوننكي" },
+      wolof: { label: "Wolof", arabic: "ولوف" },
+      pulaar: { label: "Poular", arabic: "بولار" },
+    },
+  },
+  altTracks: frAltTracks,
 } as const;
 
 const ar = {
@@ -202,7 +214,7 @@ const ar = {
     videoCaption1: "آلات الموسيقى المورية",
     videoCaption2: "عرض حيّ للآلات التراثية",
     tableHeaders: { instrument: "الآلة", type: "النوع", origin: "الأصل", description: "الوصف" },
-    typeLabels: { Cordes: "وترية", Percussion: "إيقاعية", Vent: "هوائية" } as Record<string, string>,
+    typeLabels: { Cordes: "وترية", Percussion: "إيقاعية", Vent: "هوائية", Mixte: "مختلط" } as Record<string, string>,
     footerCount: "٥ آلات موسيقية",
     list: [
       { name: "تيدينيت", type: "Cordes", origin: "مورية", desc: "عود ذو أربعة أوتار يعزف عليه الرجال من إيگاوِن، وهو العمود الفقري لموسيقى العزوان." },
@@ -278,19 +290,95 @@ const ar = {
     tags: ["النقل الشفهي", "التعليم المجتمعي", "الحفاظ على الثقافة"],
   },
   footer: {
-    brand: "اليوم الثقافي - المدرسة العليا",
+    brand: "GP - اليوم الثقافي",
     desc: "مشروع مخصص لتثمين وحفظ الثقافة التقليدية الموريتانية.",
     navTitle: "التنقل",
     sourcesTitle: "المصادر",
-    copyright: "© 2026 اليوم الثقافي. مشروع تعليمي وثقافي.",
+    copyright: "© 2026 GP - اليوم الثقافي. مشروع تعليمي وثقافي.",
     republic: "الجمهورية الإسلامية الموريتانية",
     madeBy: "تصميم وتطوير",
-    espStudents: "طلبة المدرسة العليا",
+    espStudents: "طلبة GP",
     contact: "تواصل",
   },
+  cultureNav: {
+    aria: "اختر شعباً أو ثقافة موريتانية",
+    cultures: {
+      bidan: { label: "البيظان", arabic: "البيظان" },
+      soninke: { label: "سوننكي", arabic: "سوننكي" },
+      wolof: { label: "ولوف", arabic: "ولوف" },
+      pulaar: { label: "بولار", arabic: "بولار" },
+    },
+  },
+  altTracks: arAltTracks,
 } as const;
 
+export type AltCultureTrack = {
+  heritage: {
+    subtitle: string;
+    title: string;
+    description: string;
+    body: string;
+    heroImage?: string;
+    heroImageCaption?: string;
+    videoId: string;
+    videoCaption: string;
+    stats: readonly { value: string; label: string }[];
+    features: readonly { title: string; desc: string }[];
+  };
+  music: {
+    subtitle: string;
+    title: string;
+    description: string;
+    artistsTitle: string;
+    trackLabel: string;
+    videos: readonly { id: string; caption: string }[];
+    artists: readonly { name: string; role: string; desc: string }[];
+  };
+  crafts: {
+    subtitle: string;
+    title: string;
+    description: string;
+    videoCaption1: string;
+    videoCaption2: string;
+    videoId1: string;
+    videoId2: string;
+    footerCount: string;
+    /** Lien source optionnel (ex. portail culturel) */
+    reference?: { label: string; url: string; hint: string };
+    items: readonly { name: string; type: string; origin: string; desc: string; image?: string }[];
+  };
+  social: {
+    subtitle: string;
+    title: string;
+    description: string;
+    howToPlay: string;
+    items: readonly {
+      name: string;
+      aka: string;
+      image: string;
+      description: string;
+      occasion: string;
+      players: string;
+      rules: readonly string[];
+    }[];
+  };
+};
+
 export type Content = {
+  cultureNav: {
+    aria: string;
+    cultures: {
+      bidan: { label: string; arabic: string };
+      soninke: { label: string; arabic: string };
+      wolof: { label: string; arabic: string };
+      pulaar: { label: string; arabic: string };
+    };
+  };
+  altTracks: {
+    soninke: AltCultureTrack;
+    wolof: AltCultureTrack;
+    pulaar: AltCultureTrack;
+  };
   nav: { mahadra: string; music: string; instruments: string; games: string; brand: string; langSwitch: string };
   hero: { badge: string; titleLine1: string; titleLine2: string; subtitle: string; discover: string };
   mahadra: {

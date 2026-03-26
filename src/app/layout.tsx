@@ -2,18 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ESP - Journée Culturelle",
+  title: "GP - Journée Culturelle",
   description:
     "Découvrez la richesse du patrimoine immatériel mauritanien.",
   icons: {
-    icon: "/favicon.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/gp-logo.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: "/gp-logo.png",
+    shortcut: "/favicon.png",
   },
   openGraph: {
-    title: "ESP - Journée Culturelle",
+    title: "GP - Journée Culturelle",
     description:
       "Découvrez la richesse du patrimoine immatériel mauritanien.",
-    images: ["/logo.png"],
+    images: ["/gp-logo.png"],
   },
 };
 
